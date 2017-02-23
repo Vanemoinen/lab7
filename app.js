@@ -15,6 +15,11 @@ var project = require('./routes/project');
 
 var app = express();
 
+//$('#likeBtn').click(analyzer);
+function analyzer(event) {
+	ga('send', 'event', 'likeBtn', 'click');
+}
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -37,6 +42,9 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+	//projects["min"] = false;
+app.get('/min', index.viewMin);
+	//projects["min"] = true;
 app.get('/project/:id', project.view);
 // Example route
 // app.get('/users', user.list);
